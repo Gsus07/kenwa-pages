@@ -1,0 +1,40 @@
+<nav class="fixed top-0 left-0 right-0 z-50 bg-[#fcffff]/80 backdrop-blur border-b border-[#2e8b57]/20">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-2 text-[#413030] font-bold text-xl" aria-label="Inicio">
+      <img src="/icons/KenwaLogo.png" alt="Logo de Kenwa" class="h-8 w-auto rounded" loading="eager" />
+      <span class="leading-none text-[#2e8b57]">Kenwa</span>
+    </a>
+    <!-- Navegación en escritorio -->
+    <div class="hidden md:flex items-center gap-6">
+      <a href="#services" class="text-[#413030] hover:text-[#2e8b57] transition">Servicios</a>
+      <a href="#about" class="text-[#413030] hover:text-[#2e8b57] transition">Sobre</a>
+      <a href="#download" class="text-[#413030] hover:text-[#2e8b57] transition">Descarga</a>
+      <a href="#contact" class="text-[#413030] hover:text-[#2e8b57] transition">Contacto</a>
+      <!-- <a href="#contact" class="ml-2 bg-[#2e8b57] hover:bg-[#267349] text-white font-semibold py-2 px-4 rounded-lg transition">Solicitar Asesoría</a> -->
+    </div>
+    <!-- Botón menú móvil -->
+    <div class="md:hidden">
+      <button id="menu-btn" aria-label="Abrir menú" class="inline-flex items-center gap-2 border border-[#2e8b57] text-[#2e8b57] hover:bg-[#2e8b57] hover:text-white font-semibold py-2 px-3 rounded-lg transition">
+        <span>Menú</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+      </button>
+    </div>
+  </div>
+  <!-- Panel móvil -->
+  <div id="mobile-menu" class="md:hidden hidden bg-[#fcffff] border-t border-[#2e8b57]/20">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col gap-3">
+      <a href="#services" class="text-[#413030] hover:text-[#2e8b57] transition">Servicios</a>
+      <a href="#about" class="text-[#413030] hover:text-[#2e8b57] transition">Sobre</a>
+      <a href="#download" class="text-[#413030] hover:text-[#2e8b57] transition">Descarga</a>
+      <a href="#contact" class="text-[#413030] hover:text-[#2e8b57] transition">Contacto</a>
+      <!-- <a href="#contact" class="bg-[#2e8b57] hover:bg-[#267349] text-white font-semibold py-2 px-4 rounded-lg transition">Solicitar Asesoría</a> -->
+    </div>
+  </div>
+  <script>
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    btn && btn.addEventListener('click', () => {
+      menu && menu.classList.toggle('hidden');
+    });
+  </script>
+</nav>

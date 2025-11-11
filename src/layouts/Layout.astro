@@ -1,0 +1,26 @@
+---
+import '../styles/global.css';
+import ScrollProgress from '../components/ScrollProgress.jsx';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Eliminado favicon SVG por preferir PNG -->
+    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
+    <!-- Favicon PNG para pestaña y dispositivos -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/KenwaLogo.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icons/KenwaLogo.png" />
+    <link rel="apple-touch-icon" href="/icons/KenwaLogo.png" />
+    <link rel="shortcut icon" href="/icons/KenwaLogo.png" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Kenwa - Salud y Armonía en el Trabajo</title>
+    <meta name="description" content="Kenwa transforma los espacios laborales en entornos seguros, saludables y productivos donde las personas pueden desarrollarse plenamente." />
+  </head>
+  <body class="bg-[#fcffff] text-[#413030]">
+    <ScrollProgress client:load />
+    <slot />
+  </body>
+</html>

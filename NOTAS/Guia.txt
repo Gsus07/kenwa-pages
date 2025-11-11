@@ -1,0 +1,421 @@
+INSTRUCCIONES PARA AGENTE IA: CONFIGURACIÓN PROYECTO KENWA
+CONTEXTO DEL PROYECTO
+Nombre: Kenwa (Salud y Armonía)
+
+Enfoque: Salud y Seguridad en el Trabajo
+
+Tecnologías: React, Astro, Tailwind CSS
+
+Paleta de colores:
+
+Background: #fcffff
+
+Foreground: #413030
+
+Primary: #2e8b57
+
+ESTRUCTURA DE ARCHIVOS A CREAR
+1. CONFIGURACIÓN INICIAL
+Archivo: package.json
+
+json
+{
+  "name": "kenwa-landing",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^2.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@astrojs/react": "^2.0.0",
+    "@astrojs/tailwind": "^3.0.0",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.23",
+    "tailwindcss": "^3.3.0"
+  }
+}
+Archivo: astro.config.mjs
+
+javascript
+import { defineConfig } from 'astro/config';
+import react from '@astrojs/react';
+import tailwind from '@astrojs/tailwind';
+
+export default defineConfig({
+  integrations: [react(), tailwind()]
+});
+Archivo: tailwind.config.js
+
+javascript
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  theme: {
+    extend: {
+      colors: {
+        background: '#fcffff',
+        foreground: '#413030',
+        primary: '#2e8b57'
+      }
+    },
+  },
+  plugins: [],
+}
+2. ESTILOS GLOBALES
+Archivo: src/styles/global.css
+
+css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+3. LAYOUT PRINCIPAL
+Archivo: src/layouts/Layout.astro
+
+astro
+---
+import '../styles/global.css';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenwa - Salud y Armonía en el Trabajo</title>
+    <meta name="description" content="Kenwa transforma los espacios laborales en entornos seguros, saludables y productivos donde las personas pueden desarrollarse plenamente.">
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+4. COMPONENTES REACT
+Archivo: src/components/Hero.jsx
+
+jsx
+import React from 'react';
+
+const Hero = () => {
+  return (
+    <section className="min-h-screen flex items-center justify-center bg-[#fcffff] px-4">
+      <div className="max-w-4xl mx-auto text-center">
+        <h1 className="text-5xl md:text-6xl font-bold text-[#413030] mb-6">
+          Kenwa
+        </h1>
+        <p className="text-2xl md:text-3xl text-[#413030] mb-8">
+          Salud y Armonía en el Trabajo
+        </p>
+        <p className="text-lg md:text-xl text-[#413030] mb-10 max-w-2xl mx-auto">
+          Transformamos los espacios laborales en entornos seguros, saludables y productivos 
+          donde las personas pueden desarrollarse plenamente.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <button className="bg-[#2e8b57] hover:bg-[#267349] text-white font-semibold py-3 px-8 rounded-lg transition duration-300">
+            Solicitar Asesoría
+          </button>
+          <button className="border-2 border-[#2e8b57] text-[#2e8b57] hover:bg-[#2e8b57] hover:text-white font-semibold py-3 px-8 rounded-lg transition duration-300">
+            Conocer Más
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;
+Archivo: src/components/Services.jsx
+
+jsx
+import React from 'react';
+
+const Services = () => {
+  const services = [
+    {
+      title: "Evaluación de Riesgos",
+      description: "Identificamos y evaluamos los riesgos laborales para implementar medidas preventivas efectivas.",
+      icon: "🛡️"
+    },
+    {
+      title: "Programas de Bienestar",
+      description: "Desarrollamos programas integrales para promover la salud física y mental de los colaboradores.",
+      icon: "💚"
+    },
+    {
+      title: "Capacitación Especializada",
+      description: "Formamos a tu equipo en protocolos de seguridad y prácticas laborales saludables.",
+      icon: "📚"
+    },
+    {
+      title: "Consultoría Normativa",
+      description: "Te ayudamos a cumplir con todas las regulaciones en materia de seguridad y salud en el trabajo.",
+      icon: "📋"
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-[#fcffff] px-4">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-[#413030] text-center mb-4">
+          Nuestros Servicios
+        </h2>
+        <p className="text-lg text-[#413030] text-center mb-12 max-w-2xl mx-auto">
+          Ofrecemos soluciones integrales para crear entornos laborales seguros, saludables y armoniosos.
+        </p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {services.map((service, index) => (
+            <div 
+              key={index}
+              className="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition duration-300"
+            >
+              <div className="text-4xl mb-4">{service.icon}</div>
+              <h3 className="text-xl font-semibold text-[#413030] mb-3">
+                {service.title}
+              </h3>
+              <p className="text-[#413030]">
+                {service.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Services;
+Archivo: src/components/About.jsx
+
+jsx
+import React from 'react';
+
+const About = () => {
+  return (
+    <section className="py-20 bg-white px-4">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex flex-col md:flex-row items-center gap-12">
+          <div className="md:w-1/2">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#413030] mb-6">
+              Sobre Kenwa
+            </h2>
+            <p className="text-lg text-[#413030] mb-6">
+              En Kenwa, creemos que la verdadera productividad surge de entornos laborales donde 
+              la salud y la seguridad son prioridades fundamentales.
+            </p>
+            <p className="text-lg text-[#413030] mb-6">
+              Nuestro nombre combina los conceptos de "ken" (salud) y "wa" (armonía), reflejando 
+              nuestra misión de crear espacios de trabajo donde las personas puedan desarrollarse 
+              plenamente en un ambiente seguro y equilibrado.
+            </p>
+            <div className="flex items-center gap-4 mt-8">
+              <div className="w-12 h-12 bg-[#2e8b57] rounded-full flex items-center justify-center text-white font-bold">
+                5+
+              </div>
+              <div>
+                <p className="font-semibold text-[#413030]">Años de Experiencia</p>
+                <p className="text-sm text-[#413030]">Ayudando a empresas</p>
+              </div>
+            </div>
+          </div>
+          <div className="md:w-1/2">
+            <div className="bg-gray-200 h-80 rounded-xl flex items-center justify-center text-[#413030]">
+              [Imagen representativa de Kenwa]
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default About;
+Archivo: src/components/Contact.jsx
+
+jsx
+import React, { useState } from 'react';
+
+const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Formulario enviado:', formData);
+    alert('Gracias por contactarnos. Te responderemos pronto.');
+    setFormData({
+      name: '',
+      email: '',
+      company: '',
+      message: ''
+    });
+  };
+
+  return (
+    <section className="py-20 bg-[#fcffff] px-4">
+      <div className="max-w-4xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-[#413030] text-center mb-4">
+          Contáctanos
+        </h2>
+        <p className="text-lg text-[#413030] text-center mb-12 max-w-2xl mx-auto">
+          ¿Listo para transformar tu espacio laboral? Estamos aquí para ayudarte.
+        </p>
+        
+        <div className="bg-white rounded-xl shadow-md p-8">
+          <form onSubmit={handleSubmit}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <label htmlFor="name" className="block text-[#413030] mb-2">
+                  Nombre Completo
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2e8b57]"
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="block text-[#413030] mb-2">
+                  Correo Electrónico
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2e8b57]"
+                  required
+                />
+              </div>
+            </div>
+            
+            <div className="mb-6">
+              <label htmlFor="company" className="block text-[#413030] mb-2">
+                Empresa
+              </label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                value={formData.company}
+                onChange={handleChange}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2e8b57]"
+              />
+            </div>
+            
+            <div className="mb-6">
+              <label htmlFor="message" className="block text-[#413030] mb-2">
+                Mensaje
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                rows="5"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2e8b57]"
+                required
+              ></textarea>
+            </div>
+            
+            <button
+              type="submit"
+              className="w-full bg-[#2e8b57] hover:bg-[#267349] text-white font-semibold py-3 px-8 rounded-lg transition duration-300"
+            >
+              Enviar Mensaje
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Contact;
+Archivo: src/components/Footer.jsx
+
+jsx
+import React from 'react';
+
+const Footer = () => {
+  return (
+    <footer className="bg-[#413030] text-white py-12 px-4">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="mb-6 md:mb-0">
+            <h3 className="text-2xl font-bold">Kenwa</h3>
+            <p className="mt-2">Salud y Armonía en el Trabajo</p>
+          </div>
+          
+          <div className="flex flex-col md:flex-row gap-6 md:gap-12">
+            <div>
+              <h4 className="font-semibold mb-3">Contacto</h4>
+              <p>info@kenwa.com</p>
+              <p>+1 (555) 123-4567</p>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold mb-3">Síguenos</h4>
+              <div className="flex gap-4">
+                <a href="#" className="hover:text-[#2e8b57] transition duration-300">Facebook</a>
+                <a href="#" className="hover:text-[#2e8b57] transition duration-300">LinkedIn</a>
+                <a href="#" className="hover:text-[#2e8b57] transition duration-300">Instagram</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div className="border-t border-gray-600 mt-8 pt-8 text-center">
+          <p>&copy; {new Date().getFullYear()} Kenwa. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
+5. PÁGINA PRINCIPAL
+Archivo: src/pages/index.astro
+
+astro
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero';
+import Services from '../components/Services';
+import About from '../components/About';
+import Contact from '../components/Contact';
+import Footer from '../components/Footer';
+---
+
+<Layout>
+  <main>
