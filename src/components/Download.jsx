@@ -60,7 +60,7 @@ const Download = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href="https://github.com/InflvxDev/kenwa_releases/releases/download/1.0/kenwa.apk"
+                  href="https://github.com/InflvxDev/kenwa_releases/releases/download/1.0.3/kenwa1.0.3.apk"
                   download
                   ref={apkBtnRef}
                   className="inline-flex items-center justify-center bg-[#2e8b57] hover:bg-[#267349] text-white font-semibold py-3 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg transform hover:scale-[1.03] active:scale-[0.99]"
